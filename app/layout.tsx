@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { APP_DESCRIPTION, APP_NAME, SERVER_URL } from "@/lib/constants";
+
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -12,10 +15,15 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "ProBarber",
-  description: "Barbería en Uruguay. Cortes clásicos y modernos, barba y afeitado profesional. Reservá tu turno online fácil y rápido.",
-};
+
+export const metadata: Metadata ={
+  title:{
+    template: `%s | ProBarber`,
+    default: APP_NAME
+  },
+  description: APP_DESCRIPTION,
+  metadataBase: new URL(SERVER_URL)
+}
 
 export default function RootLayout({
   children,
