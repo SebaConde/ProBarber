@@ -1,7 +1,8 @@
 'use client'
 import { motion } from "framer-motion";
+import Link from "next/link";
+const Hero =  () => {
 
-const Hero = () => {
   return (
     <section id="inicio" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0">
@@ -12,8 +13,9 @@ const Hero = () => {
       <div className="relative z-10 text-center px-6 max-w-3xl mx-auto">
         <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}
           className="font-body text-sm tracking-[0.35em] uppercase text-red-light mb-6">
-          Experiencia Premium en Barbería
+          Experiencia Premium en Barbería 
         </motion.p>
+        
 
         <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }}
           className="font-display text-5xl md:text-7xl font-bold leading-tight mb-6 text-cream">
@@ -29,9 +31,9 @@ const Hero = () => {
 
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.6 }}
           className="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="#contacto" className="bg-brand-gradient text-cream font-body text-sm font-semibold tracking-widest uppercase px-10 py-4 rounded-sm hover:opacity-90 transition-opacity">
+          <Link href='/sign-in' className="bg-brand-gradient text-cream font-body text-sm font-semibold tracking-widest uppercase px-10 py-4 rounded-sm hover:opacity-90 transition-opacity">
             Reservar Cita
-          </a>
+          </Link>
           <a href="#servicios" className="border border-cream/30 text-cream font-body text-sm font-semibold tracking-widest uppercase px-10 py-4 rounded-sm hover:border-cream hover:text-cream transition-colors">
             Ver Servicios
           </a>

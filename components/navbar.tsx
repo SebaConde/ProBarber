@@ -1,6 +1,7 @@
 'use client'
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import Link from "next/link";
 
 const navLinks = [
   { label: "Inicio", href: "#inicio" },
@@ -34,12 +35,9 @@ const Navbar = () => {
             </li>
           ))}
           <li>
-            <a
-              href="#contacto"
-              className="bg-brand-gradient text-cream font-body text-sm font-semibold tracking-widest uppercase px-6 py-2.5 rounded-sm hover:opacity-90 transition-opacity"
-            >
+            <Link href='/sign-in' className="bg-brand-gradient text-cream font-body text-sm font-semibold tracking-widest uppercase px-6 py-2.5 rounded-sm hover:opacity-90 transition-opacity">
               Reservar
-            </a>
+            </Link>
           </li>
         </ul>
 
