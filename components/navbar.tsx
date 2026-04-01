@@ -1,7 +1,7 @@
-'use client'
-import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
+import UserButton from "./shared/header/user-button";
+import { auth } from "@/auth";
 
 const navLinks = [
   { label: "Inicio", href: "#inicio" },
@@ -10,8 +10,8 @@ const navLinks = [
   { label: "Contacto", href: "#contacto" },
 ];
 
-const Navbar = () => {
-  const [open, setOpen] = useState(false);
+const Navbar = async() => {
+  const session = await auth()
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
@@ -34,19 +34,28 @@ const Navbar = () => {
               </a>
             </li>
           ))}
-          <li>
+        </ul>
+
+        <ul className="hidden md:flex items-center gap-8">
+          {session?(<li>
+            <Link href='/user/reservar' className="bg-brand-gradient text-cream font-body text-sm font-semibold tracking-widest uppercase px-6 py-2.5 rounded-sm hover:opacity-90 transition-opacity">
+              Reservar
+            </Link>
+          </li>):(
             <Link href='/sign-in' className="bg-brand-gradient text-cream font-body text-sm font-semibold tracking-widest uppercase px-6 py-2.5 rounded-sm hover:opacity-90 transition-opacity">
               Reservar
             </Link>
-          </li>
+          )}
+          
+          {session?(<UserButton session={session}/>):('')}
         </ul>
 
-        <button className="md:hidden text-foreground" onClick={() => setOpen(!open)}>
+        {/* <button className="md:hidden text-foreground" onClick={() => setOpen(!open)}>
           {open ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        </button> */}
       </div>
 
-      {open && (
+      {/* {open && (
         <div className="md:hidden bg-background border-t border-border px-6 pb-6">
           <ul className="flex flex-col gap-4 pt-4">
             {navLinks.map((link) => (
@@ -58,12 +67,12 @@ const Navbar = () => {
             ))}
             <li>
               <a href="#contacto" onClick={() => setOpen(false)} className="inline-block bg-brand-gradient text-cream font-body text-sm font-semibold tracking-widest uppercase px-6 py-2.5 rounded-sm">
-                Reservar
+                Reservar isdhnfgiosd
               </a>
             </li>
           </ul>
         </div>
-      )}
+      )} */}
     </nav>
   );
 };
