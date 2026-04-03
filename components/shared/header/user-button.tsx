@@ -23,11 +23,13 @@ const UserButton = ({ session }: Props) => {
       {session ? (
         <DropdownMenu>
           <DropdownMenuTrigger>
-            <div className="flex items-center">
-              <Button variant="ghost" className="relative w-8 h-8 rounded-full ml-2 flex items-center justify-center">
-                {session?.user?.name?.charAt(0).toUpperCase() || "U"}
-              </Button>
-            </div>
+            <Button
+              variant="ghost"
+              className="relative w-8 h-8 rounded-full ml-2 flex items-center justify-center"
+            >
+              {/* <UserIcon /> */}
+              {session?.user?.name?.charAt(0).toUpperCase() || "U"}
+            </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent className="w-56" align="end">
             <DropdownMenuGroup>
@@ -43,23 +45,23 @@ const UserButton = ({ session }: Props) => {
               </DropdownMenuLabel>
               <DropdownMenuItem className="p-0 mb-1">
                 <form action={signOutUser} className="w-full">
-                  <Button className="w-full py-4 px-2 h-4 justify-start" variant="ghost">
+                  <button className="w-full py-4 px-2 h-4 justify-stretch cursor-pointer inline-flex items-center gap-2 rounded-md text-sm font-medium hover:bg-accent hover:text-accent-foreground transition-colors">
                     Cerrar sesión
-                  </Button>
+                  </button>
                 </form>
               </DropdownMenuItem>
             </DropdownMenuGroup>
           </DropdownMenuContent>
         </DropdownMenu>
       ) : (
-        <Button>
-          <Link href="/sign-in">
+        <Link href="/sign-in">
+          <Button>
             <UserIcon />
-          </Link>
-        </Button>
+          </Button>
+        </Link>
       )}
     </div>
   );
 };
 
-export default UserButton; 
+export default UserButton;
