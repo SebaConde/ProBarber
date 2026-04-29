@@ -6,7 +6,6 @@ import { hashSync } from "bcrypt-ts-edge";
 import {prisma} from '@/db/prisma'
 import { formatError } from "../utils";
 
-
 //Sign in con credenciales
 export async function signInWithCredentials(
   prevState: unknown,
@@ -27,7 +26,7 @@ export async function signInWithCredentials(
     return { success: false, message: "Datos inválidos." };
   }
 }
-//Cerrar cuenta
+//Cerrar sesion
 export async function signOutUser() {
   await signOut();
 }

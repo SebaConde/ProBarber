@@ -41,8 +41,15 @@ const UserButton = ({ session }: Props) => {
                   <div className="text-sm text-muted-foreground leading-none">
                     {session?.user?.email}
                   </div>
+                  <div className="text-sm text-muted-foreground leading-none">
+                    {/* <Link href={session?.user?.role === 'admin' ? '/admin/dashboard' : '/user/dashboard'}> */}
+                    <Link href={ `/${session?.user?.role}/dashboard`   || '/'}>
+                     Dashboard
+                    </Link>
+                  </div>
                 </div>
               </DropdownMenuLabel>
+              
               <DropdownMenuItem className="p-0 mb-1">
                 <form action={signOutUser} className="w-full">
                   <button className="w-full py-4 px-2 h-4 justify-stretch cursor-pointer inline-flex items-center gap-2 rounded-md text-sm font-medium hover:bg-accent hover:text-accent-foreground transition-colors">
